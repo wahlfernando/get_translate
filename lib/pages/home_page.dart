@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(TranslateKey.welcome.trParams({'name': 'Fernando'})),
             Text(TranslateKey.userListTitleSimple.trPlural(1)),

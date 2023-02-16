@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 enum TranslateKey {
@@ -34,23 +37,19 @@ enum TranslateKey {
 }
 
 class TranslationsKeys extends Translations {
+
+  var ptKeys = <String, String>{};
+  var usKeys = <String, String>{};
+
+  Future<void> load() async{
+    ptKeys = Map<String, String>.from(jsonDecode(await rootBundle.loadString('assets/locales/pt.json')));
+    usKeys = Map<String, String>.from(jsonDecode(await rootBundle.loadString('assets/locales/en.json')));
+  }
+
+
   @override
   Map<String, Map<String, String>> get keys => {
-        'en_US': {
-          'title_app': "GetX Translate",
-          'welcome': "Hello @nome",
-          'user_list_title_simple': 'User',
-          'user_list_title_simple_plaural': 'Users',
-          'user_list_title': '@total User',
-          'user_list_title_plural': '@total Users',
-        },
-        'pt_BR': {
-          'title_app': "GetX Tradução",
-          'welcome': "Olá @nome",
-          'user_list_title_simple': 'Usuário',
-          'user_list_title_simple_plaural': 'Usuários',
-          'user_list_title': '@total Usuário',
-          'user_list_title_plural': '@total Usuários',
-        },
+        'en_US': usKeys,
+        'pt_BR': ptKeys,
       };
 }
