@@ -1,4 +1,4 @@
-# get_translate
+# getx_translate
 
 ## Projeto de estudo com FLutter e GetX
 
